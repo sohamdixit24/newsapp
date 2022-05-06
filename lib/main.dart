@@ -45,10 +45,10 @@ class _LoginPageState extends State<LoginPage> {
     if (value.isEmpty) {
       return false ;
     }
-    else if (regExp.hasMatch(value) && value.length==10) {
-      return true;
+    else if (!regExp.hasMatch(value) && value.length==10) {
+      return false;
     }
-    return false;
+    return true;
   }
   movetoHome(BuildContext context){
     if(_formKey.currentState!.validate()){
@@ -103,9 +103,12 @@ class _LoginPageState extends State<LoginPage> {
                       return " Email/Mobile number cannot be empty";
                    }
                    _isvalid =EmailValidator.validate(value);
-                   if( _isvalid || validateMobile(value) ) {
-                       return "Enter valid email id or mobile number";
+                   if(!_isvalid) {
+                       return "Enter valid email id ";
                      }
+                   if(validateMobile(value)){
+                     return "Enter valid mobile number";
+                   }
                    return null;
                   },
                 ),
