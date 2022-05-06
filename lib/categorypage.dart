@@ -52,16 +52,19 @@ class _CategoryFragmentState extends State<CategoryFragment> {
         child: Column(
           children: [
             SizedBox(
-              child: ListView.builder(
-                itemCount: newsarticles.length,
-                scrollDirection: Axis.vertical,
-                physics: const ClampingScrollPhysics(),
-                itemBuilder: (context,index){
-                  return NewsTemplate(title:newsarticles[index].title, author: newsarticles[index].author, content: newsarticles[index].content, date: newsarticles[index].date, imageUrl: newsarticles[index].imageUrl);
+              child: Container(
+                margin: const EdgeInsets.all(5),
+                child: ListView.builder(
+                  itemCount: newsarticles.length,
+                  scrollDirection: Axis.vertical,
+                  physics: const ClampingScrollPhysics(),
+                  itemBuilder: (context,index){
+                    return NewsTemplate(title:newsarticles[index].title, author: newsarticles[index].author, content: newsarticles[index].content, date: newsarticles[index].date, imageUrl: newsarticles[index].imageUrl);
 
-                },
-                shrinkWrap: true,
+                  },
+                  shrinkWrap: true,
 
+                ),
               ),
             ),
           ],
